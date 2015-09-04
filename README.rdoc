@@ -3,7 +3,7 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-<h2>Things you may want to cover:</h2>
+Things you may want to cover:
 
 * Ruby version
 
