@@ -8,11 +8,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <!-- nav menu -->
 
 <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Logo</a>
+      <a href="/" class="brand-logo"><%=image_tag('logo.png', :style => 'width:95px;')%></a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">reorder</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="sass.html">Sass</a></li>
@@ -33,43 +34,11 @@
 <!-- end nav menu -->
 
 
-<!-- slide -->
-<div class="slider" style="height:590px">
-    <ul class="slides" style="height:550px;">
-      <li>
-        <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
-        <div class="caption left-align">
-          <h3>Left Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
-        <div class="caption right-align">
-          <h3>Right Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-    </ul>
-  </div>
-<!-- end slide -->
-<div class="container">
+
+<!-- end input seach -->
+
 	<%= yield %>
-</div>
+
 <script>
 $(document).ready(function(){
       $('.slider').slider();
@@ -79,5 +48,44 @@ $(document).ready(function(){
 });
     
 </script>
+<!-- footer -->
+<footer class="page-footer">
+    
+      <div class="row">
+          <div class="col l4 s12">
+            <h5 class="white-text">Help Materialize Grow</h5>
+            <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+            
+
+          </div>
+          <div class="col l4 s12">
+            <h5 class="white-text">Join the Discussion</h5>
+            <p class="grey-text text-lighten-4">We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.</p>
+            
+          </div>
+          <div class="col l4 s12" style="overflow: hidden;">
+            <h5 class="white-text">Connect</h5>
+            <div class="fb-page" data-href="https://www.facebook.com/copanyplace" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/copanyplace"><a href="https://www.facebook.com/copanyplace">Find Place</a></blockquote></div></div>
+            </div>
+          </div>
+        
+    </div>
+    <div class="footer-copyright" style="padding:0 0.75rem">
+      
+        &copy; 2014 - 2015 FindPlace . All right reserved
+        <a class="grey-text text-lighten-4 right" href="/welcome/index">FindPlace Company</a>
+      
+    </div>
+</footer>
+<!-- end footer -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 </body>
 </html>
