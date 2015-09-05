@@ -1,0 +1,27 @@
+<div class="page_header">
+	<h2>Users Management</h2>
+</div>
+<table class="table table-striped">
+	<tr>
+		<th>ID</th>
+		<th>Email</th>
+		<th>Fullname</th>
+		<th>Address</th>
+		<th>Age</th>
+		<th>Role</th>
+		<th>Created_at</th>
+		<th></th>
+	</tr>
+	<% @users.each do |u| %>
+		<tr>
+			<td><%=u.id %></td>
+			<td><%=u.email %></td>
+			<td><%=u.fullname %></td>
+			<td><%=u.address %></td>
+			<td><%=u.age %></td>
+			<td><%=u.role %></td>
+			<td><%=u.created_at.strftime("%d - %m - %Y %H:%M:%S") %></td>
+			<td></td>
+		</tr>
+	<%end%>
+</table>

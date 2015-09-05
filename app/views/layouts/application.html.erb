@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>FindPlace</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -9,53 +10,74 @@
 <body>
 <!-- nav menu -->
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" style="text-decoration:none; display:none" href="/welcome/index">{Web}<strong>mely</strong></a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active">
-        	<a href="/welcome/index">Home<span class="sr-only">(current)</span></a>
-        </li>
-        
-       
+<nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Logo</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">reorder</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
       </ul>
-      
-      
-      <!-- login, logout -->
-      <p class="navbar-text pull-right">
-      
-
-		<% if user_signed_in? %>
-		  Logged in as <strong><%= current_user.email %></strong>.
-		 
-		  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-		<% else %>
-		  <%=link_to "Login", new_user_session_path, :class=>'navbar-link', :style=>'text-decoration:none'%> | 
-		  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' ,:style => 'text-decoration:none' %>
-      
-		<% end %>
-		</p>
-      <!-- end login , log_out -->
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+      </ul>
+    </div>
+  </nav>
+          
+        
 <!-- end nav menu -->
 
+
+<!-- slide -->
+<div class="slider" style="height:590px">
+    <ul class="slides" style="height:550px;">
+      <li>
+        <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
+        <div class="caption left-align">
+          <h3>Left Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+<!-- end slide -->
 <div class="container">
 	<%= yield %>
 </div>
-
+<script>
+$(document).ready(function(){
+      $('.slider').slider();
+      $(".button-collapse").sideNav();
+      $(".slider").attr("style", "height:590px");
+      $(".slides").attr("style", "height:550px");
+});
+    
+</script>
 </body>
 </html>

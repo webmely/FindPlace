@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'devise'
-gem 'less-rails-bootstrap'
-gem 'therubyracer'
 gem 'cancancan'
+gem 'materialize-sass', '~> 0.97.0'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
