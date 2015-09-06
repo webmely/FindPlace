@@ -314,7 +314,7 @@ $(document).ready(function(){
 			//$("#search-box").css("background","#FFF");
 			//console.log(data.length);
 			for (var i = 0; i < data.length; i ++){ 
-				$("#suggesstion-box").append("<p onclick='clickme(this)'>"+data[i].name+"</p>");
+				$("#suggesstion-box").append("<p id='"+data[i].id+"' onclick='clickme(this.id)'>"+data[i].name+"</p>");
 				
 			}
 			
@@ -323,9 +323,9 @@ $(document).ready(function(){
 	});
 });
 function clickme(id){
-	var n = $(id).text();
+	var n = $("#"+id).text();
 	$("#searchname").val(n);
-	$("#proviceid").val(n);
+	$("#proviceid").val(id);
 	$("#suggesstion-box").hide();
 }
 </script>
