@@ -1,5 +1,5 @@
 <h2 class="header">Provices Management 
-	<a class="right waves-effect waves-light btn" href="/admin/provices/new">Add Provice</a>
+	<a class="waves-effect waves-light btn right " href="/admin/provices/new">Add Provice</a>
 </h2>
 <table class="striped hoverable">
 	<tr>
@@ -13,7 +13,12 @@
 			<td><%=u.id %></td>
 			<td><%=u.name %></td>
 			<td><%=u.created_at.strftime("%d - %m - %Y %H:%M:%S") %></td>
-			<td></td>
+			<td>
+				<a href='<%=edit_admin_provice_path(u) %>'  alt="Show Provice"><i class="material-icons">input</i></a>  
+				<a data-confirm="Are you sure?"rel="nofollow" data-method="delete" href="<%=admin_provice_path(u)%>"><i class="material-icons">delete</i></a>
+			</td>
 		</tr>
 	<%end%>
 </table>
+<hr style="margin-top:30px;" />
+<%= paginate @provices %>

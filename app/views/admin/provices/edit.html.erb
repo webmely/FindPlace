@@ -1,0 +1,12 @@
+<h2 class="header">Edit Provice 
+	<a class="right waves-effect waves-light btn" href="/admin/provices">Back</a>
+</h2>
+<%=form_for  :provice, url: admin_provice_path(@provice), method: :patch do |f|%>
+	<div class="row">
+        <div class="input-field col s12">
+          <%=f.text_field :name %>
+          <label for="email" class="active">Provice Name</label>
+        </div>
+      </div>
+      <button style="margin-right:20px;" class="btn waves-effect waves-light" type="submit" name="action">Update Provice</button>
+<%end%>

@@ -17,15 +17,16 @@
         <li><a href="/admin">Home</a></li>
         <li><a href="/admin/users">Users</a></li>
         <li><a href="/admin/provices">Provices</a></li>
+        <li><a href="/admin/types">Types</a></li>
       </ul>
       
       <ul class="right">
           <% if user_signed_in? %>
               <li style=" padding-left:20px;">
                   Logged in as <strong><%= current_user.email %></strong>
-                  <% if current_user.role == "admin" || current_user.role == "sale"%>
-                  <%= link_to 'View admin', '/admin', :target => '_parent', :class => 'waves-effect waves-light' %>|
-                  <%end%>
+                  
+                  <%= link_to 'View Site', root_path, :target => '_parent', :class => 'waves-effect waves-light' %>|
+              
                   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'waves-effect waves-light' %>
               </li>
           <%else%>

@@ -72,3 +72,25 @@
 #suggesstion-box p:hover{
 	background: #345453;
 }
+
+.bg-stripe{
+	background-image: image-url("stripe.png");
+	height:12px;
+	overflow:hidden;
+}
+.title-m{
+	width:100%;
+}
+.row-hotel{
+	width:100%;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.welcome-index{
+	padding:20px;
+	margin-top:20px;
+}
+.title-m h3{
+	margin-top:-21px;
+	margin-right:10px;
+}

@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'cancancan'
 gem 'materialize-sass', '~> 0.97.0'
+gem 'kaminari'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
