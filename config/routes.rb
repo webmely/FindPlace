@@ -2,11 +2,16 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index' #set root page for website
   devise_for :users #config path for table users
+  resources :provices do
+    collection do
+      get 'load_provice'
+    end
+  end
 
   #config admin page
   scope module: 'admin' ,as: 'admin', :path => 'admin' do
       root 'welcome#index' #set root page for admin panel
-      resources :users
+      resources :users, :provices
   end
   #end config admin page
 

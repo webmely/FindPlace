@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PreviewUrl</title>
+  <title>FindPlace admin panel</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'style' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="navbar navbar-default" style="background:#ccc;">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Brand</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/admin">Home <span class="sr-only">(current)</span></a></li>
+<nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo"><%=image_tag('logo.png', :style => 'width:95px;')%></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">reorder</i></a>
+      <ul class="left hide-on-med-and-down menu-p">
+        <li><a href="/admin">Home</a></li>
         <li><a href="/admin/users">Users</a></li>
-        <li><a href="/admin/posts">Posts</a></li>
+        <li><a href="/admin/provices">Provices</a></li>
       </ul>
-     
-      <p class="navbar-text pull-right">
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> | 
-        <a href="<%=root_path%>" class="navbar-link">view site</a> | 
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-      <% end %>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+      
+      <ul class="right">
+          <% if user_signed_in? %>
+              <li style=" padding-left:20px;">
+                  Logged in as <strong><%= current_user.email %></strong>
+                  <% if current_user.role == "admin" || current_user.role == "sale"%>
+                  <%= link_to 'View admin', '/admin', :target => '_parent', :class => 'waves-effect waves-light' %>|
+                  <%end%>
+                  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'waves-effect waves-light' %>
+              </li>
+          <%else%>
+              <li>
+                  <button data-target="modal1" class="modal-trigger" style="background:none; margin-right:20px;margin-left:20px;border:none">Login | Signup</button>
+              </li>
+          <%end%>
+      </ul>
+      
+
+      
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+      </ul>
+    </div>
+  </nav>
+          
+        
+<!-- end nav menu -->
 <div class="container">
 	<%= yield %>
 </div>

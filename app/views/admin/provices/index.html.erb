@@ -1,0 +1,19 @@
+<h2 class="header">Provices Management 
+	<a class="right waves-effect waves-light btn" href="/admin/provices/new">Add Provice</a>
+</h2>
+<table class="striped hoverable">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Created_at</th>
+		<th></th>
+	</tr>
+	<% @provices.each do |u| %>
+		<tr>
+			<td><%=u.id %></td>
+			<td><%=u.name %></td>
+			<td><%=u.created_at.strftime("%d - %m - %Y %H:%M:%S") %></td>
+			<td></td>
+		</tr>
+	<%end%>
+</table>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FindPlace</title>
+  <title>Find Location</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -15,12 +15,30 @@
     <div class="nav-wrapper">
       <a href="/" class="brand-logo"><%=image_tag('logo.png', :style => 'width:95px;')%></a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">reorder</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+      <ul class="left hide-on-med-and-down menu-p">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Abouts</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
+      
+      <ul class="right">
+          <% if user_signed_in? %>
+              <li style=" padding-left:20px;">
+                  Logged in as <strong><%= current_user.email %></strong>
+                  <% if current_user.role == "admin" || current_user.role == "sale"%>
+                  <%= link_to 'View admin', '/admin', :target => '_parent', :class => 'waves-effect waves-light' %>|
+                  <%end%>
+                  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'waves-effect waves-light' %>
+              </li>
+          <%else%>
+              <li>
+                  <button data-target="modal1" class="modal-trigger" style="background:none; margin-right:20px;margin-left:20px;border:none">Login | Signup</button>
+              </li>
+          <%end%>
+      </ul>
+      
+
+      
       <ul class="side-nav" id="mobile-demo">
         <li><a href="sass.html">Sass</a></li>
         <li><a href="badges.html">Components</a></li>
@@ -32,9 +50,40 @@
           
         
 <!-- end nav menu -->
+<!-- modal login -->
+ <!-- Modal Trigger -->
 
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="modal-content">
+      <h4 style="border-bottom:#ccc solid 2px; padding-bottom:20px;">Login</h4>
+          
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.email_field :email, class: "validate" %>
+              <label for="email">Email</label>
+            </div>
+          </div>
 
-
+          <div class="row">
+            <div class="input-field col s12">
+               <%= f.password_field :password, autocomplete: "off", class: "validate" %>
+              <label for="password">Password</label>
+            </div>
+          </div>
+          
+     
+    </div>
+    <div class="modal-footer">
+    <a style="margin-right:20px;" href="#!" class=" btn modal-action modal-close waves-effect waves-green">Cancel</a>
+      <button style="margin-right:20px;" class="btn waves-effect waves-light" type="submit" name="action">Login
+  </button>
+      
+    </div>
+     <%end%>
+  </div>
+<!-- end modal login -->
 <!-- end input seach -->
 
 	<%= yield %>
@@ -45,6 +94,7 @@ $(document).ready(function(){
       $(".button-collapse").sideNav();
       $(".slider").attr("style", "height:590px");
       $(".slides").attr("style", "height:550px");
+      $('.modal-trigger').leanModal();
 });
     
 </script>
@@ -65,7 +115,7 @@ $(document).ready(function(){
           </div>
           <div class="col l4 s12" style="overflow: hidden;">
             <h5 class="white-text">Connect</h5>
-            <div class="fb-page" data-href="https://www.facebook.com/copanyplace" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/copanyplace"><a href="https://www.facebook.com/copanyplace">Find Place</a></blockquote></div></div>
+            
             </div>
           </div>
         
@@ -78,14 +128,7 @@ $(document).ready(function(){
     </div>
 </footer>
 <!-- end footer -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+
 
 </body>
 </html>

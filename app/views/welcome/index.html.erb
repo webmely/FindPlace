@@ -55,14 +55,16 @@
                 </p>
             </h6>
             <div class="row">
-              <div class="input-field col s12">
-                <input id="searchname" type="text">
-                <label for="seachname" data-ero="wrong">
-                    Nhập vào nơi đến
-                </label>
-
-              </div>
-              <a class="waves-effect waves-light btn" style="bottom:-26px;margin-left:20px;">Tìm kiếm</a>
+              		<div class="input-field col s12">
+              
+	                <input id="searchname" type="text" name="searchname">
+	                <input type="hidden" name="proviceid" id="proviceid" />
+	                <label for="seachname" data-error="wrong">
+	                    Nhập vào nơi đến
+	                </label>
+	                <div id="suggesstion-box"></div>
+	              </div>
+	              <button class="waves-effect waves-light btn" style="bottom:-26px;margin-left:20px;">Tìm kiếm</button>
             </div>
         </form>
     </div>
@@ -144,6 +146,8 @@
 	<div style="clear:both"></div>
 </div>
 
+
+
 <!-- top dia diem -->
 <div style="width:100%">
 	<h3 class="left light" style="width:100%;">Top điểm đến</h3>
@@ -216,6 +220,8 @@
 	<div style="clear:both"></div>
 </div>
 
+
+
 <!-- top noi an uong-->
 <div style="width:100%">
 	<h3 class="left light" style="width:100%;">Top nơi ăn uống</h3>
@@ -287,4 +293,41 @@
 	</div>
 	<div style="clear:both"></div>
 </div>
+
 </div>
+
+<script>
+	// AJAX call for autocomplete 
+$(document).ready(function(){
+	$("#searchname").keyup(function(){
+		var url = $(this);
+		var link = $(url).val();
+		$("#suggesstion-box").html("");
+		$("#suggesstion-box").show();
+		$.ajax({
+		type: "GET",
+		 dataType: "json",
+		url: "/provices/load_provice",
+		data:{q: link},
+		success: function(data){
+			$("#suggesstion-box").show();
+			//$("#search-box").css("background","#FFF");
+			//console.log(data.length);
+			for (var i = 0; i < data.length; i ++){ 
+				$("#suggesstion-box").append("<p onclick='clickme(this)'>"+data[i].name+"</p>");
+				
+			}
+			
+		}
+		});
+	});
+});
+function clickme(id){
+	var n = $(id).text();
+	$("#searchname").val(n);
+	$("#proviceid").val(n);
+	$("#suggesstion-box").hide();
+}
+</script>
+
+
