@@ -6,6 +6,7 @@ module Admin
 
 		def new
 			@place = Place.new
+
 		end
 
 		def edit
@@ -14,12 +15,18 @@ module Admin
 
 		def create
 			@place = Place.new(places_params)
-			if @place.save
-				params[:place][:photo].each do |picture|
-					@place.image.create(:photo => picture)
+			if !params[:place][:photo].nil?
+				if @place.save
+						params[:place][:photo].each do |picture|
+							@place.image.create(:photo => picture)
+						end
+						redirect_to admin_places_path
+
+				else
+					render 'new'
 				end
-				redirect_to admin_places_path
 			else
+				@msg = "Ban chua chon anh"
 				render 'new'
 			end
 		end

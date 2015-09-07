@@ -19,7 +19,7 @@
         	</div>
         	<div class="input-field col s6 type_">
 	        	<p class="select_type">Select Type :</p>
-	        	<%= collection_select(:type, :id, Type.all, :id, :typename) %>
+	        	<%= collection_select(:type, :id, Type.all, :id, :typename, :prompt => "Select Type") %>
         	</div>
         	
 	</div>
@@ -27,28 +27,31 @@
 
 		<div class="input-field col s6 type_">
 	        	<p class="select_type">Select Star :</p>
-	        	<%= collection_select(:star, :id, Star.all, :id, :starcount) %>
+	        	<%= collection_select(:star, :id, Star.all, :id, :starcount, :prompt => "Select Star") %>
         	</div>
         	<div class="input-field col s6 type_">
 	        	<p class="select_type">Select Provice :</p>
-	        	<%= collection_select(:provice, :id, Provice.all, :id, :name) %>
+	        	<%= collection_select(:provice, :id, Provice.all, :id, :name, :prompt => "Select Provice") %>
         	</div>
 	</div>
 	<div class="row">
 		<h5 class="header">Upload Images</h5	>
-		<div class="file-field col s6">
-         		 <input class="file-path validate right" type="text"  style="width:70%; border-bottom:#9e9e9e solid 2px;" />
-            	<div class="btn" style="float:left">
-	              <span>Photo1</span>
-	              <%=f.file_field :photo, multiple: true %>
-	            </div>
+		<div class="input-field col s6">
+                <p>Ảnh giới thiệu. Nhấn Ctrl để chọn nhiều ảnh </p>
+         		<%=f.file_field :photo , multiple: true %>
             </div>
-            
-        	
-        	
-        	
+            <div class="input-field col s6">
+                <p>Ảnh đại diện</p>
+            <%=f.file_field :photo  %>
+            </div>
 	</div>
+  
+      <h5 class="header"></h5>
 	<button style="margin-right:20px;" class="btn waves-effect waves-light" type="submit" name="action">Create Place</button>
 <!-- end place -->
 <%end%>
+<div style="margin-bottom:30px;"></div>
+
+
+
 
