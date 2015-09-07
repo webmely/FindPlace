@@ -1,0 +1,18 @@
+<h2 class="header">Edit Type 
+	<a class="right waves-effect waves-light btn" href="/admin/types">Back</a>
+</h2>
+<%=form_for  :type, url: admin_type_path(@type), method: :patch do |f|%>
+	<div class="row">
+        <div class="input-field col s12">
+          <%=f.text_field :typename %>
+          <label for="email" class="active">Type Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%=f.text_field :description %>
+          <label for="email" class="active">Description</label>
+        </div>
+      </div>
+      <button style="margin-right:20px;" class="btn waves-effect waves-light" type="submit" name="action">Update Type</button>
+<%end%>

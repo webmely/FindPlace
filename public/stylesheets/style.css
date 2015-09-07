@@ -12,3 +12,16 @@ nav{
 	margin-top: 13px;
 	font-weight: 500;
 }
+.add-role p{
+	float:left;
+	margin-right: 20px;
+}
+.add-role label{
+	font-size: 16px;
+	margin-left: 10px;
+}
+#image_preview{
+	margin-top: 20px;
+	display: none;
+	width:200px;
+}

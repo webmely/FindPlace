@@ -4,6 +4,7 @@ gem 'devise'
 gem 'cancancan'
 gem 'materialize-sass', '~> 0.97.0'
 gem 'kaminari'
+gem "paperclip", "~> 4.3"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

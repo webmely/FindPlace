@@ -1,0 +1,21 @@
+<h2 class="header">Edit Star
+	<a class="waves-effect waves-light btn right " href="/admin/stars">Back</a>
+</h2>
+
+<%=form_for  :star, url: admin_star_path(@star), method: :patch do |f|%>
+	<div class="row">
+        <div class="input-field col s12">
+          <%=f.text_field :starcount %>
+          <label for="email" class="active">Star</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%=f.text_field :description %>
+          <label for="email" class="active">Description</label>
+        </div>
+      </div>
+
+      <button style="margin-right:20px;" class="btn waves-effect waves-light" type="submit" name="action">Update Star</button>
+<%end%>

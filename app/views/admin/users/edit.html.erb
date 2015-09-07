@@ -1,0 +1,78 @@
+<h2 class="header">Edit User
+  <a class="waves-effect waves-light btn right " href="/admin/users">Back</a>
+</h2>
+
+<%=form_for  :user, url: admin_user_path(@user), method: :patch  do |f|%>
+  <div class="row">
+        <div class="input-field col s12">
+          <%=f.email_field :email %>
+          <label for="email" class="active">Email</label>
+        </div>
+      </div>
+
+      
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%=f.text_field :fullname %>
+          <label for="email" class="active">Fullname</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%=f.text_field :address %>
+          <label for="email" class="active">Address</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%=f.text_field :age %>
+          <label for="email" class="active">Age</label>
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="file-field input-field col s12">
+            <input class="file-path validate right" type="text"  style="width:89%; border-bottom:#9e9e9e solid 2px;" />
+            <div class="btn" style="float:left">
+              <span>File</span>
+              <%=f.file_field :photo, :id => "user_photo" %>
+            </div>
+            <img id="image_preview" src="#" alt="your image" />
+          </div>
+      </div>
+
+      <div class="row add-role">
+        <p ><label>Role : </label></p>
+        <p >
+          <%=f.radio_button :role, 'admin' %>
+          <label for="user_role_admin">Admin</label>
+        </p>
+        <p >
+          <%=f.radio_button :role, 'none' , :checked=>true %>
+          <label for="user_role_none">None</label>
+        </p>
+      </div>
+      <button style="margin-right:20px;" class="btn waves-effect waves-light" type="submit" name="action">Update User</button>
+     
+<% end %>
+<div style="height:30px;"></div>
+<!-- preview image upload -->
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#image_preview').attr('src', e.target.result);
+            $('#image_preview').attr('style', 'display:block;')
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#user_photo").change(function(){
+      readURL(this);
+  });
+</script>
+<!-- end preview image upload -->

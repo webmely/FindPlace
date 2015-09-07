@@ -1,0 +1,24 @@
+<h2 class="header">Star Management 
+	<a class="waves-effect waves-light btn right " href="/admin/stars/new">New Star</a>
+</h2>
+<table class="striped hoverable">
+	<tr>
+		<th>ID</th>
+		<th>Star</th>
+		<th>Description</th>
+		<th>Created_at</th>
+		<th></th>
+	</tr>
+	<%@stars.each do |s|%>
+		<tr>
+			<td><%=s.id%></td>
+			<td><%=s.starcount%></td>
+			<td><%=s.description%></td>
+			<td><%=s.created_at.strftime("%d - %m - %Y %H:%M:%S")%></td>
+			<td>
+				<a href='<%=edit_admin_star_path(s) %>'  alt="Edit Star"><i class="material-icons">note_add</i></a>  
+				<a data-confirm="Are you sure?"rel="nofollow" data-method="delete" href="<%=admin_star_path(s)%>"><i class="material-icons">delete</i></a>
+			</td>
+		</tr>
+	<%end%>
+</table>

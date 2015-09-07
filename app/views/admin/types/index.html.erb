@@ -13,7 +13,10 @@
 			<td><%=t.typename %></td>
 			<td><%=t.description %></td>
 			<td><%=t.created_at.strftime("%d - %m - %Y %H:%M:%S") %></td>
-			<td></td>
+			<td>
+				<a href='<%=edit_admin_type_path(t) %>'  alt="Edit Type"><i class="material-icons">note_add</i></a>  
+				<a data-confirm="Are you sure?"rel="nofollow" data-method="delete" href="<%=admin_type_path(t)%>"><i class="material-icons">delete</i></a>
+			</td>
 		</tr>
 	<% end %>
 </table>

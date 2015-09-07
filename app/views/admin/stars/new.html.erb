@@ -1,0 +1,21 @@
+<h2 class="header">New Star
+	<a class="waves-effect waves-light btn right " href="/admin/stars">Back</a>
+</h2>
+
+<%=form_for  :star, url: admin_stars_path do |f|%>
+	<div class="row">
+        <div class="input-field col s12">
+          <%=f.text_field :starcount %>
+          <label for="email">Star</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%=f.text_field :description %>
+          <label for="email">Description</label>
+        </div>
+      </div>
+
+      <button style="margin-right:20px;" class="btn waves-effect waves-light" type="submit" name="action">Create Star</button>
+<%end%>
