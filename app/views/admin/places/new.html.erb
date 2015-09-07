@@ -1,0 +1,54 @@
+<h2 class="header">New Place
+	<a class="waves-effect waves-light btn right " href="/admin/places">Back</a>
+</h2>
+
+<%=form_for  :place, url: admin_places_path, :html => { :multipart => true }  do |f|%>
+<!-- place -->
+	<div class="row">
+		<div class="input-field col s6">
+         		 <%=f.text_field :name %>
+          		 <label for="email">Name</label>
+        	</div>
+        	<div class="input-field col s6">
+         		 <%=f.text_field :address %>
+          		 <label for="email">Address</label>
+        	</div>
+        	<div class="input-field col s6">
+         		 <%=f.text_field :description %>
+          		 <label for="email">Description</label>
+        	</div>
+        	<div class="input-field col s6 type_">
+	        	<p class="select_type">Select Type :</p>
+	        	<%= collection_select(:type, :id, Type.all, :id, :typename) %>
+        	</div>
+        	
+	</div>
+	<div class="row">
+
+		<div class="input-field col s6 type_">
+	        	<p class="select_type">Select Star :</p>
+	        	<%= collection_select(:star, :id, Star.all, :id, :starcount) %>
+        	</div>
+        	<div class="input-field col s6 type_">
+	        	<p class="select_type">Select Provice :</p>
+	        	<%= collection_select(:provice, :id, Provice.all, :id, :name) %>
+        	</div>
+	</div>
+	<div class="row">
+		<h5 class="header">Upload Images</h5	>
+		<div class="file-field col s6">
+         		 <input class="file-path validate right" type="text"  style="width:70%; border-bottom:#9e9e9e solid 2px;" />
+            	<div class="btn" style="float:left">
+	              <span>Photo1</span>
+	              <%=f.file_field :photo, multiple: true %>
+	            </div>
+            </div>
+            
+        	
+        	
+        	
+	</div>
+	<button style="margin-right:20px;" class="btn waves-effect waves-light" type="submit" name="action">Create Place</button>
+<!-- end place -->
+<%end%>
+

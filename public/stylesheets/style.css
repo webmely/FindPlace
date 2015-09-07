@@ -25,3 +25,14 @@ nav{
 	display: none;
 	width:200px;
 }
+select {
+	display:block;
+}
+.select_type{
+	width:25%;
+	float:left;
+}
+.type_ select{
+	width:65%;
+	float:left;
+}

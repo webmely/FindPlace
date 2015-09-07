@@ -1,0 +1,22 @@
+<h2 class="header">Places Management
+<a class="waves-effect waves-light btn right " target="_parent" href="/admin/places/new">New Places</a>
+</h2>
+
+<table class="striped hoverable">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Address</th>
+		<th>Created_at</th>
+		<th></th>
+	</tr>
+	<%@places.each do |p| %>
+		<tr>
+			<td><%=p.id%></td>
+			<td><%=p.name%></td>
+			<td><%=p.address%></td>
+			<td><%=p.created_at.strftime("%d-%m-%Y %H:%M:%S")%></td>
+			<td><%=p.id%></td>
+		</tr>
+	<%end%>
+</table>
