@@ -36,3 +36,15 @@ select {
 	width:65%;
 	float:left;
 }
+.flow-text-label{
+	font-size: 16px;
+	font-weight: 600;
+}
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked{
+	position: relative;
+	left: 0;
+	visibility: visible;
+}
+.checkb{
+	margin: 0;
+}

@@ -1,0 +1,70 @@
+<h2 class="header">Edit Place
+	<a class="waves-effect waves-light btn right " href="/admin/places">Back</a>
+</h2>
+
+<%=form_for  :place, url: admin_place_path(@place), :html => { :multipart => true }, method: :patch  do |f|%>
+<!-- place -->
+	<div class="row">
+		<div class="input-field col s6">
+         		 <%=f.text_field :name %>
+          		 <label for="email" class="active">Name</label>
+        	</div>
+        	<div class="input-field col s6">
+         		 <%=f.text_field :address %>
+          		 <label for="email" class="active">Address</label>
+        	</div>
+        	<div class="input-field col s6">
+         		 <%=f.text_area :description , :class=>'materialize-textarea'%>
+          		 <label for="email" class="active">Description</label>
+        	</div>
+        	<div class="input-field col s6 type_">
+	        	<p class="select_type">Select Type :</p>
+	        	<%= collection_select(:place, :type_id, Type.all, :id, :typename, :prompt => "Select Type") %>
+        	</div>
+        	
+	</div>
+	<div class="row">
+
+		<div class="input-field col s6 type_">
+	        	<p class="select_type">Select Star :</p>
+	        	<%= collection_select(:place, :star_id, Star.all, :id, :starcount, :prompt => "Select Star") %>
+        	</div>
+        	<div class="input-field col s6 type_">
+	        	<p class="select_type">Select Provice :</p>
+	        	<%= collection_select(:place, :provice_id, Provice.all, :id, :name, :prompt => "Select Provice") %>
+        	</div>
+	</div>
+	<div class="row">
+		<h5 class="header">Upload Images</h5	>
+		<div class="input-field col s6">
+                <p>Ảnh đại diện</p>
+            	<%=f.file_field :avatar  %>
+            	<p><%= image_tag @place.avatar.url(:thumb) %></p>
+            </div>
+		<div class="input-field col s12">
+                <p>Ảnh giới thiệu. Nhấn Ctrl để chọn nhiều ảnh <span style="color:red;">(Chọn ảnh để xóa)</span></p>
+         		<%=f.file_field :photo , multiple: true %>
+         		<ul>
+         			<%img = Image.where(place_id: @place.id) %>
+				<%img.each do |m|%>
+					<li style="float:left; margin-right:10px;">
+					<p class="checkb">
+						<input style="height:20px; width:30px;" type="checkbox" class="checkbox" name="photo_old[<%= m.id %>]" />
+					</p>
+					<%= image_tag m.photo.url(:thumb), :style => "padding:5px; border:#ccc solid 1px;"%>
+					</li>
+				<%end%>
+         		</ul>
+            </div>
+
+	</div>
+  
+      <h5 class="header"></h5>
+	<button style="margin-right:20px;" class="btn waves-effect waves-light" type="submit" name="action">Update Place</button>
+<!-- end place -->
+<%end%>
+<div style="margin-bottom:30px;"></div>
+
+
+
+

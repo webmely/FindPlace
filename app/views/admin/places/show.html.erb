@@ -1,0 +1,60 @@
+<h2 class="header">Places Detail
+<a class="waves-effect waves-light btn right " target="_parent" href="/admin/places">Back</a>
+</h2>
+<div class="row">
+	<div class="col s6 ">
+		<span class="flow-text-label">Name : </span>
+		<p class="flow-text"><%=@place.name%></p>
+	</div>
+	<div class="col s6 ">
+		<span class="flow-text-label">Address : </span>
+		<p class="flow-text"><%=@place.address%></p>
+	</div>
+	<div class="col s12">
+		<span class="flow-text-label">Description</span>
+		<p class="flow-text"><%=@place.description%></p>
+	</div>
+	<div class="col s6">
+		<span class="flow-text-label">Type :</span>
+		<p class="flow-text">
+			<% type = Type.find(@place.type_id)%>
+			<%=type.typename %>
+		</p>
+	</div>
+	<div class="col s6">
+		<span class="flow-text-label">Rate : </span>
+		<p class="flow-text">
+			<%star = Star.find(@place.star_id)%>
+			<%count = star.starcount%>
+			<%i =1 %>
+			<% for i in (i..count) %>
+				<i class="material-icons" style="float:left; width:30px;color:red;">star_rate</i>
+			<%end%>
+		</p>
+	</div>
+	<div class="col s12"></div>
+	<div class="col s6">
+		<span class="flow-text-label">Image : </span>
+		<p class="flow-text">
+			<%= image_tag @place.avatar.url(:medium)%>
+		</p>
+	</div>
+	<div class="col s6">
+		<span class="flow-text-label">Provice : </span>
+		<p class="flow-text">
+			<%provice = Provice.find(@place.provice_id)%>
+			<%=provice.name%>
+		</p>
+	</div>
+	<div class="col s12">
+		<span class="flow-text-label">Photo Abouts</span>
+		<p class="flow-text">
+			<%img = Image.where(place_id: @place.id) %>
+			<%img.each do |m|%>
+				<%= image_tag m.photo.url(:thumb), :style => "padding:5px; border:#ccc solid 1px;"%>
+			<%end%>
+		</p>
+	</div>
+</div>
+
+		

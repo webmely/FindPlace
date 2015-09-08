@@ -2,7 +2,7 @@ class Image < ActiveRecord::Base
 	belongs_to :place
 
 	has_attached_file :photo,
-                    :styles => { :thumb => "140x140#", :small => "70x70#"},
+                    :styles => { :thumb => "140x140#", :small => "70x70#", :medium =>"400x400#"},
                     :default_url => "/images/:style/missing.png",
                     :url => "/images/img/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/images/img/:id/:style/:basename.:extension"

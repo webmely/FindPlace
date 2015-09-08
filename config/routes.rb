@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   scope module: 'admin' ,as: 'admin', :path => 'admin' do
       root 'welcome#index' #set root page for admin panel
       resources :users, :provices, :types, :stars, :places
+      
   end
   #end config admin page
 

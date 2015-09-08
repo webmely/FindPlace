@@ -7,7 +7,7 @@
 		<th>ID</th>
 		<th>Name</th>
 		<th>Address</th>
-		<th>Created_at</th>
+		<th>Type</th>
 		<th></th>
 	</tr>
 	<%@places.each do |p| %>
@@ -15,8 +15,17 @@
 			<td><%=p.id%></td>
 			<td><%=p.name%></td>
 			<td><%=p.address%></td>
-			<td><%=p.created_at.strftime("%d-%m-%Y %H:%M:%S")%></td>
-			<td><%=p.id%></td>
+			<td>
+				<% type = Type.find(p.type_id) %>
+				<%=type.typename%>
+			</td>
+			<td>
+				<a href='<%=admin_place_path(p) %>' alt="Show details"><i class="material-icons">input</i></a> 
+				<a href='<%=edit_admin_place_path(p) %>'  alt="Edit Place"><i class="material-icons">note_add</i></a>  
+				<a data-confirm="Are you sure?"rel="nofollow" data-method="delete" href="<%=admin_place_path(p)%>"><i class="material-icons">delete</i></a>
+			</td>
 		</tr>
 	<%end%>
 </table>
+<div style="border-bottom:#ccc solid 2px; margin:20px 0;"></div>
+<%= paginate @places %>

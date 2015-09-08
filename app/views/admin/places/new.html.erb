@@ -14,12 +14,12 @@
           		 <label for="email">Address</label>
         	</div>
         	<div class="input-field col s6">
-         		 <%=f.text_field :description %>
+         		 <%=f.text_area :description , :class=>'materialize-textarea'%>
           		 <label for="email">Description</label>
         	</div>
         	<div class="input-field col s6 type_">
 	        	<p class="select_type">Select Type :</p>
-	        	<%= collection_select(:type, :id, Type.all, :id, :typename, :prompt => "Select Type") %>
+	        	<%= collection_select(:place, :type_id, Type.all, :id, :typename, :prompt => "Select Type") %>
         	</div>
         	
 	</div>
@@ -27,11 +27,11 @@
 
 		<div class="input-field col s6 type_">
 	        	<p class="select_type">Select Star :</p>
-	        	<%= collection_select(:star, :id, Star.all, :id, :starcount, :prompt => "Select Star") %>
+	        	<%= collection_select(:place, :star_id, Star.all, :id, :starcount, :prompt => "Select Star") %>
         	</div>
         	<div class="input-field col s6 type_">
 	        	<p class="select_type">Select Provice :</p>
-	        	<%= collection_select(:provice, :id, Provice.all, :id, :name, :prompt => "Select Provice") %>
+	        	<%= collection_select(:place, :provice_id, Provice.all, :id, :name, :prompt => "Select Provice") %>
         	</div>
 	</div>
 	<div class="row">
@@ -42,7 +42,7 @@
             </div>
             <div class="input-field col s6">
                 <p>Ảnh đại diện</p>
-            <%=f.file_field :photo  %>
+            <%=f.file_field :avatar  %>
             </div>
 	</div>
   
