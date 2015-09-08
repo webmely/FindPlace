@@ -11,4 +11,16 @@ class Place < ActiveRecord::Base
   
     validates_attachment :avatar, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]}
 
+
+    def self.search(type_id, provice_id)
+		if type_id == ""
+			where("provice_id = #{provice_id}")
+		elsif type_id == 1
+			where("type_id = #{type_id} AND provice_id = #{provice_id}")
+		elsif type_id == 2
+			where("type_id = #{type_id} AND provice_id = #{provice_id}")
+		else
+			where("type_id = #{type_id} AND provice_id = #{provice_id}")
+		end
+    end
 end

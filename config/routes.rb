@@ -7,12 +7,19 @@ Rails.application.routes.draw do
       get 'load_provice'
     end
   end
+  resources :welcome do
+          collection do
+            post 'search'
+          end
+  end
+  resources :places
+  
 
   #config admin page
   scope module: 'admin' ,as: 'admin', :path => 'admin' do
       root 'welcome#index' #set root page for admin panel
       resources :users, :provices, :types, :stars, :places
-      
+
   end
   #end config admin page
 
