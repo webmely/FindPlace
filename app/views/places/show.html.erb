@@ -44,19 +44,25 @@
 		<div class="col s12">
 			<ul class="tabs">
 				<li class="tab col s3">
-					<a href="#review">Bài viết</a>
+					<a href="#comment">Bình luận</a>
 				</li>
 				<li class="tab col s3">
-					<a href="#comment">Bình Luận</a>
+					<a href="#review">Bài viết</a>
 				</li>
 			</ul>
 		</div>
+		
 		<div id="review" class="col s12">
-			Bài viết
+			<% postp = Postplace.where(place_id: @place.id) %>
+			<%postp.each do |pp|%>
+				<h4><%=pp.title%></h4>
+				<div class="col s12"><%= raw pp.content %></div>
+			<%end%>
 		</div>
 		<div id="comment" class="col s12">
 			Comment
 		</div>
+		
 	</div>
 </div>
 
