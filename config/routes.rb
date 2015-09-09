@@ -9,16 +9,16 @@ Rails.application.routes.draw do
   end
   resources :welcome do
           collection do
-            post 'search'
+            get 'search'
           end
   end
-  resources :places
+  resources :places 
   
 
   #config admin page
   scope module: 'admin' ,as: 'admin', :path => 'admin' do
       root 'welcome#index' #set root page for admin panel
-      resources :users, :provices, :types, :stars, :places
+      resources :users, :provices, :types, :stars, :places, :postplaces
 
   end
   #end config admin page

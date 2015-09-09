@@ -1,3 +1,18 @@
 // Place all the styles related to the places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.place{
+	width:100%;
+	padding:20px;
+}
+.tabs .tab{
+	width:25% !important;
+}
+.review{
+	border-top:#ccc solid 2px;
+	margin-top:20px;
+}
+.tabs {
+	margin-bottom:20px !important;
+}

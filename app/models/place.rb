@@ -13,7 +13,7 @@ class Place < ActiveRecord::Base
 
 
     def self.search(type_id, provice_id)
-		if type_id == ""
+		if type_id == "all"
 			where("provice_id = #{provice_id}")
 		elsif type_id == 1
 			where("type_id = #{type_id} AND provice_id = #{provice_id}")
@@ -23,4 +23,5 @@ class Place < ActiveRecord::Base
 			where("type_id = #{type_id} AND provice_id = #{provice_id}")
 		end
     end
+
 end

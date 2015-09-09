@@ -10,5 +10,4 @@ class ApplicationController < ActionController::Base
   end
   #End cancan
 
-
 end
