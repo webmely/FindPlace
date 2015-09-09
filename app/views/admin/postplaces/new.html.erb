@@ -1,0 +1,31 @@
+<div style="margin-bottom:50px;">
+<h2 class="header">New Post
+	<a class="waves-effect waves-light btn right " href="/admin/postplaces">Back</a>
+</h2>
+<%= form_for :postplace ,url: admin_postplaces_path do |f|%>
+	<div class="row">
+		<div class="input-field col s12">
+			 <%=f.text_field :title %>
+          		 <label for="email">Title</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-field col s12">
+			<p>Content : </p>
+			 <%=f.cktext_area :content %>
+          		 
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-field col s6 type_">
+			<p class="select_type">Select Place :</p>
+				<%= collection_select(:postplace, :place_id, Place.all, :id, :name, :prompt => "Select place") %>
+		</div>
+	</div>
+	<div class="row" style="margin-top:30px;">
+		<div class="col s12">
+			<button style="margin-right:20px;" class="btn waves-effect waves-light" type="submit" name="action">Create Post</button>
+		</div>
+	</div>
+<%end%>
+</div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   get 'welcome/index'
   root 'welcome#index' #set root page for website
   devise_for :users #config path for table users

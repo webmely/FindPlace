@@ -1,0 +1,13 @@
+<h2 class="header">Details Post
+	<a class="waves-effect waves-light btn right " href="/admin/postplaces">Back</a>
+</h2>
+<div class="row">
+	<div class="col s12">
+		<span class="flow-text-label">Post Title : </span>
+		<p class="flow-text"><%=@postplace.title %></p>
+	</div>
+	<div class="col s12">
+		<span class="flow-text-label">Post Content : </span>
+		<p class="flow-text"><%= raw @postplace.content %></p>
+	</div>
+</div>

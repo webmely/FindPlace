@@ -5,6 +5,7 @@ gem 'cancancan'
 gem 'materialize-sass', '~> 0.97.0'
 gem 'kaminari'
 gem "paperclip", "~> 4.3"
+gem "ckeditor"
 
 
 

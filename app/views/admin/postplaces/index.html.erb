@@ -1,3 +1,21 @@
 <h2 class="header">Post Management
 <a class="waves-effect waves-light btn right " target="_parent" href="/admin/postplaces/new">New Post</a>
 </h2>
+<table class="striped hoverable">
+	<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Created_at</th>
+		<th></th>
+	</tr>
+	<%@postplaces.each do |p|%>
+		<tr>
+			<td><%=p.id%></td>
+			<td><%=p.title%></td>
+			<td><%=p.created_at.strftime("%d-%m-%Y %H:%M:%S")%></td>
+			<td>
+				<a href='<%=admin_postplace_path(p) %>' alt="Show details"><i class="material-icons">input</i></a> 
+			</td>
+		</tr>
+	<%end%>
+</table>
