@@ -11,7 +11,7 @@ class Place < ActiveRecord::Base
   
     validates_attachment :avatar, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]}
 
-
+    #function search provice and type
     def self.search(type_id, provice_id)
 		if type_id == "all"
 			where("provice_id = #{provice_id}")
@@ -24,4 +24,8 @@ class Place < ActiveRecord::Base
 		end
     end
 
+    #function load top place
+    def self.topplace
+        where("star_id >= 3")
+    end
 end

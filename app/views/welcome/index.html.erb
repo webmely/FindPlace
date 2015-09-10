@@ -74,239 +74,60 @@
 <!-- input seach -->
 
 <div style="clear:both"></div>
-<!-- top khach san-->
 <div class="welcome-index">
-<div class="row-hotel">
-	
+	<!-- top khach san-->
+	<%@types.each do |t|%>
+	<div class="row-hotel">
 	<div class="title-m">
-		<h3 class="left light">Top khách sạn</h3>
+		<h3 class="left light">Top <%=t.typename%></h3>
 		<div class="bg-stripe"></div>
 	</div>
 	<div class="row" style="float:left">
-		<div class="col s12 m6 l3" >
-			<div class="card">
-			    <div class="card-image waves-efect waves-block waves-light">
-			      
-			      <%=image_tag('office.jpg', :class => 'activator') %>
-			    </div>
-			    <div class="card-content">
-			      <span class="card-title activator grey-text text-darken-4">
-			      	Card Title<i class="material-icons right top-style">more_vert</i>
-			      </span>
-			      <p><a href="#">This is a link</a></p>
-			    </div>
-			    <div class="card-reveal">
-			      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-			      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-			    </div>
-			  </div>
+		<%@places.where(type_id: t.id).each do |p|%>
+				
+					<div class="col s12 m6 l3" >
+						<div class="card">
+						    <div class="card-image waves-efect waves-block waves-light">
+						      <%=image_tag p.avatar, :class => 'activator', :style=>'width:292px; height:219px;' %>
+						    </div>
+						    <div class="card-content">
+						      <span class="card-title activator grey-text text-darken-4">
+						      	<%=p.name%>
+						      	<i class="material-icons right top-style">more_vert</i>
+						      </span>
+						      <p style="width:100%; height:30px;">
+						      	<%star = Star.find(p.star_id)%>
+								<%count = star.starcount%>
+								<%i =1 %>
+								<% for i in (i..count) %>
+									<i class="material-icons" style="float:left; width:20px;color:red;">star_rate</i>
+								<%end%>
+								<p style="clear:both"></p>
+						      </p>
+						      <p class="add-s"><%=p.address%></p>
+						      <p><a href="<%=place_path(p)%>">Xem chi tiết</a></p>
+						    </div>
+						    <div class="card-reveal">
+						      <span class="card-title grey-text text-darken-4">
+						      	<%=p.name%>
+						      	<i class="material-icons right">close</i>
+						      </span>
+						      <p>
+						      	<%=p.description%>
+						      </p>
+						      <p><a href="<%=place_path(p)%>">Xem chi tiết</a></p>
+						    </div>
+						  </div>
+					</div>
+				
+			
+		<%end%>
 		</div>
-		<div class="col s12 m6 l3" >
-			<div class="card">
-			    <div class="card-image waves-efect waves-block waves-light">
-			      
-			      <%=image_tag('office.jpg', :class => 'activator') %>
-			    </div>
-			    <div class="card-content">
-			      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right top-style">more_vert</i></span>
-			      <p><a href="#">This is a link</a></p>
-			    </div>
-			    <div class="card-reveal">
-			      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-			      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-			    </div>
-			  </div>
+				<div style="clear:both"></div>
 		</div>
-		<div class="col s12 m6 l3" >
-			<div class="card">
-			    <div class="card-image waves-efect waves-block waves-light">
-			      
-			      <%=image_tag('office.jpg', :class => 'activator') %>
-			    </div>
-			    <div class="card-content">
-			      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right top-style">more_vert</i></span>
-			      <p><a href="#">This is a link</a></p>
-			    </div>
-			    <div class="card-reveal">
-			      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-			      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-			    </div>
-			  </div>
-		</div>
-		<div class="col s12 m6 l3" >
-			<div class="card">
-			    <div class="card-image waves-efect waves-block waves-light">
-			      
-			      <%=image_tag('office.jpg', :class => 'activator') %>
-			    </div>
-			    <div class="card-content">
-			      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right top-style">more_vert</i></span>
-			      <p><a href="#">This is a link</a></p>
-			    </div>
-			    <div class="card-reveal">
-			      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-			      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-			    </div>
-			  </div>
-		</div>
-	</div>
-	<div style="clear:both"></div>
+	<%end%>
 </div>
 
-
-<!-- top dia diem -->
-<div class="row-hotel">
-	<div class="title-m">
-		<h3 class="left light">Top điểm đến</h3>
-		<div class="bg-stripe"></div>
-	</div>
-	<div class="row" style="float:left">
-		<div class="col s12 m6 l3" >
-			<div class="card">
-			    <div class="card-image waves-efect waves-block waves-light">
-			      
-			      <%=image_tag('office.jpg', :class => 'activator') %>
-			    </div>
-			    <div class="card-content">
-			      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right top-style">more_vert</i></span>
-			      <p><a href="#">This is a link</a></p>
-			    </div>
-			    <div class="card-reveal">
-			      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-			      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-			    </div>
-			  </div>
-		</div>
-		<div class="col s12 m6 l3" >
-			<div class="card">
-			    <div class="card-image waves-efect waves-block waves-light">
-			      
-			      <%=image_tag('office.jpg', :class => 'activator') %>
-			    </div>
-			    <div class="card-content">
-			      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right top-style">more_vert</i></span>
-			      <p><a href="#">This is a link</a></p>
-			    </div>
-			    <div class="card-reveal">
-			      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-			      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-			    </div>
-			  </div>
-		</div>
-		<div class="col s12 m6 l3" >
-			<div class="card">
-			    <div class="card-image waves-efect waves-block waves-light">
-			      
-			      <%=image_tag('office.jpg', :class => 'activator') %>
-			    </div>
-			    <div class="card-content">
-			      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right top-style">more_vert</i></span>
-			      <p><a href="#">This is a link</a></p>
-			    </div>
-			    <div class="card-reveal">
-			      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-			      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-			    </div>
-			  </div>
-		</div>
-		<div class="col s12 m6 l3" >
-			<div class="card">
-			    <div class="card-image waves-efect waves-block waves-light">
-			      
-			      <%=image_tag('office.jpg', :class => 'activator') %>
-			    </div>
-			    <div class="card-content">
-			      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right top-style">more_vert</i></span>
-			      <p><a href="#">This is a link</a></p>
-			    </div>
-			    <div class="card-reveal">
-			      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-			      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-			    </div>
-			  </div>
-		</div>
-	</div>
-	<div style="clear:both"></div>
-</div>
-
-
-<!-- top noi an uong-->
-<div class="row-hotel">
-	<div class="title-m">
-		<h3 class="left light">Top nơi ăn uống</h3>
-		<div class="bg-stripe"></div>
-	</div>
-	<div class="row" style="float:left;">
-		<div class="col s12 m6 l3" >
-			<div class="card">
-			    <div class="card-image waves-efect waves-block waves-light">
-			      
-			      <%=image_tag('office.jpg', :class => 'activator') %>
-			    </div>
-			    <div class="card-content">
-			      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right top-style">more_vert</i></span>
-			      <p><a href="#">This is a link</a></p>
-			    </div>
-			    <div class="card-reveal">
-			      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-			      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-			    </div>
-			  </div>
-		</div>
-		<div class="col s12 m6 l3" >
-			<div class="card">
-			    <div class="card-image waves-efect waves-block waves-light">
-			      
-			      <%=image_tag('office.jpg', :class => 'activator') %>
-			    </div>
-			    <div class="card-content">
-			      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right top-style">more_vert</i></span>
-			      <p><a href="#">This is a link</a></p>
-			    </div>
-			    <div class="card-reveal">
-			      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-			      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-			    </div>
-			  </div>
-		</div>
-		<div class="col s12 m6 l3" >
-			<div class="card">
-			    <div class="card-image waves-efect waves-block waves-light">
-			      
-			      <%=image_tag('office.jpg', :class => 'activator') %>
-			    </div>
-			    <div class="card-content">
-			      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right top-style">more_vert</i></span>
-			      <p><a href="#">This is a link</a></p>
-			    </div>
-			    <div class="card-reveal">
-			      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-			      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-			    </div>
-			  </div>
-		</div>
-		<div class="col s12 m6 l3" >
-			<div class="card">
-			    <div class="card-image waves-efect waves-block waves-light">
-			      
-			      <%=image_tag('office.jpg', :class => 'activator') %>
-			    </div>
-			    <div class="card-content">
-			      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right top-style">more_vert</i></span>
-			      <p><a href="#">This is a link</a></p>
-			    </div>
-			    <div class="card-reveal">
-			      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-			      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-			    </div>
-			  </div>
-		</div>
-	</div>
-	<div style="clear:both"></div>
-</div>
-
-
-</div>
 
 <script>
 	// AJAX call for autocomplete 
