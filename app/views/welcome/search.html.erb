@@ -1,5 +1,6 @@
 
 <div class="welcome-index">
+<% if !@search.empty?%>
 <%provice = Provice.find(params[:proviceid]) %>
 <%if params[:type]!="all" %>
 <h4 class="header">
@@ -105,6 +106,10 @@
 <%end%>
 
 <div style="clear:both"></div>
-
+<%else%>
+	<h4>Chúng tôi đang cập nhập thông tin cho địa điểm này</h4>
+	<h4>Bạn vui lòng quay lại sau . </h4>
+	<%=image_tag ('notfound.jpg'), :style=>'overflow:hidden'%>
+<%end%>
 </div>
 

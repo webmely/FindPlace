@@ -54,9 +54,13 @@
 		
 		<div id="review" class="col s12">
 			<% postp = Postplace.where(place_id: @place.id) %>
-			<%postp.each do |pp|%>
-				<h4><%=pp.title%></h4>
-				<div class="col s12"><%= raw pp.content %></div>
+			<% if !postp.empty? %>
+				<%postp.each do |pp|%>
+					<h4><%=pp.title%></h4>
+					<div class="col s12"><%= raw pp.content %></div>
+				<%end%>
+			<%else%>
+				<h4>Chúng tôi đang cập nhập thông tin cho địa điểm này</h4>
 			<%end%>
 		</div>
 		<div id="comment" class="col s12">
