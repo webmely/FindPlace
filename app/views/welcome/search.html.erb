@@ -91,7 +91,13 @@
 				</div>
 			<%end%>
 			<div style="padding:20px 10px; text-align:right; width:100%; float:left">
-				<a href="#" class="waves-effect waves-light btn">Xem thêm <%=t.typename%></a></div>
+				<form action="/welcome/searchprovice" method="get">
+					<input type="hidden" name="proviceid" id="proviceid" value="<%=params[:proviceid]%>" />
+					<input type="hidden" name="typeid" id="typeid" value="<%=t.id%>" />
+					 <button class="btn waves-effect waves-light" type="submit">Xem thêm <%=t.typename%>
+					 </button>
+				</form>
+			</div>
 			<div style="clear:both"></div>
 		</div>
 

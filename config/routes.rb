@@ -2,17 +2,22 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   get 'welcome/index'
   root 'welcome#index' #set root page for website
+
   devise_for :users #config path for table users
+
   resources :provices do
     collection do
       get 'load_provice'
     end
   end
+
   resources :welcome do
           collection do
             get 'search'
+            get 'searchprovice'
           end
   end
+  
   resources :places do 
     collection do
       get 'create_comment'

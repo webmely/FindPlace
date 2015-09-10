@@ -21,7 +21,7 @@
 			<td><%=u.address %></td>
 			<td><%=u.age %></td>
 			<td><%=u.role %></td>
-			<td><%=image_tag u.photo.url(:small) %></td>
+			<td><%=image_tag u.photo.url(:small) ,:style=>'width:70px; height:70px;'%></td>
 			<td><%=u.created_at.strftime("%d - %m - %Y %H:%M:%S") %></td>
 			<td>
 				<a href='<%=edit_admin_user_path(u) %>'  alt="Edit User"><i class="material-icons">note_add</i></a>  
@@ -30,3 +30,5 @@
 		</tr>
 	<%end%>
 </table>
+<hr/>
+<%= paginate @users %>

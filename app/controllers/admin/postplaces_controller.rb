@@ -1,7 +1,7 @@
 module Admin
 	class PostplacesController < AdminController
 		def index
-			@postplaces = Postplace.order("created_at DESC")
+			@postplaces = Postplace.order("created_at DESC").page(params[:page]).per(10)
 		end
 
 		def show
@@ -32,6 +32,12 @@ module Admin
 			else
 				render 'edit'
 			end
+		end
+
+		def destroy
+			@postplace = Postplace.find(params[:id])
+			@postplace.destroy
+			redirect_to :back
 		end
 
 		private

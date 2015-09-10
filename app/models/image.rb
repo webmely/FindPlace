@@ -1,5 +1,6 @@
 class Image < ActiveRecord::Base
 	belongs_to :place
+	validates :photo, presence:true
 
 	has_attached_file :photo,
                     :styles => { :thumb => "140x140#", :small => "70x70#", :medium =>"400x400#"},

@@ -3,24 +3,39 @@
 </h2>
 
 <%=form_for  :user, url: admin_users_path  do |f|%>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h4>
+            <%= pluralize(@user.errors.count, "error") %> prohibited
+            this user from being saved:
+          </h4>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+
 	<div class="row">
         <div class="input-field col s12">
           <%=f.email_field :email %>
-          <label for="email">Email</label>
+          <label for="email" class="active">Email</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
           <%=f.password_field :password %>
-          <label for="email">Password</label>
+          <label for="email" class="active">Password</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
           <%=f.text_field :fullname %>
-          <label for="email">Fullname</label>
+          <label for="email" class="active">Fullname</label>
         </div>
       </div>
 
@@ -34,7 +49,7 @@
       <div class="row">
         <div class="input-field col s12">
           <%=f.text_field :age %>
-          <label for="email">Age</label>
+          <label for="email" class="active">Age</label>
         </div>
       </div>
       <div class="row">

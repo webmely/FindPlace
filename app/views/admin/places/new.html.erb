@@ -4,6 +4,23 @@
 
 <%=form_for  :place, url: admin_places_path, :html => { :multipart => true }  do |f|%>
 <!-- place -->
+      <% if @place.errors.any? %>
+        <div id="error_explanation">
+          <h4>
+            <%= pluralize(@place.errors.count, "error") %> prohibited
+            this place from being saved:
+          </h4>
+          <ul>
+            <% @place.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%if !@message.nil?%>
+          <p><%=@message%></p>
+      <%end%>
 	<div class="row">
 		<div class="input-field col s6">
          		 <%=f.text_field :name %>

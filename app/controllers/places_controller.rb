@@ -12,6 +12,5 @@ class PlacesController < ApplicationController
 		if @comment.save
 			redirect_to :back
 		end
-
 	end
 end

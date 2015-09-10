@@ -30,7 +30,7 @@ module Admin
 					render 'new'
 				end
 			else
-				@msg = "Ban chua chon anh"
+				@message = "Bạn chưa chọn ảnh nào giới thiệu cho địa điểm này ."
 				render 'new'
 			end
 		end

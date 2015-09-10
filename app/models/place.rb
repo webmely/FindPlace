@@ -3,6 +3,16 @@ class Place < ActiveRecord::Base
   belongs_to :type
   has_many :image
 
+  #validate data
+  validates :name, presence: true
+validates :address, presence: true
+validates :description, presence: true
+validates :type_id, presence: true
+validates :star_id, presence: true
+validates :provice_id, presence: true
+validates :avatar, presence: true
+  #end
+
   has_attached_file :avatar,
                     :styles => { :thumb => "140x140#", :small => "70x70#", :medium =>"200x200#"},
                     :default_url => "/images/:style/missing.png",
@@ -27,5 +37,10 @@ class Place < ActiveRecord::Base
     #function load top place
     def self.topplace
         where("star_id >= 3")
+    end
+
+    #function search by provice
+    def self.searchbyprovice(provice_id, type_id)
+      where("provice_id = #{provice_id} AND type_id = #{type_id}")
     end
 end

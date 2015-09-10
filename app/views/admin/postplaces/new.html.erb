@@ -3,10 +3,24 @@
 	<a class="waves-effect waves-light btn right " href="/admin/postplaces">Back</a>
 </h2>
 <%= form_for :postplace ,url: admin_postplaces_path do |f|%>
+	<% if @postplace.errors.any? %>
+        <div id="error_explanation">
+          <h4>
+            <%= pluralize(@postplace.errors.count, "error") %> prohibited
+            this post from being saved:
+          </h4>
+          <ul>
+            <% @postplace.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
 	<div class="row">
 		<div class="input-field col s12">
 			 <%=f.text_field :title %>
-          		 <label for="email">Title</label>
+          		 <label for="email" class="active">Title</label>
 		</div>
 	</div>
 	<div class="row">

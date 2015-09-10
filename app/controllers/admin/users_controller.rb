@@ -1,7 +1,7 @@
 module Admin
 	class UsersController < AdminController
 		def index
-			@users = User.order("created_at DESC")
+			@users = User.order("created_at DESC").page(params[:page]).per(10)
 		end
 
 		def new
