@@ -13,7 +13,14 @@ Rails.application.routes.draw do
             get 'search'
           end
   end
-  resources :places 
+  resources :places do 
+    collection do
+      get 'create_comment'
+    end
+  end
+
+
+
   
 
   #config admin page
