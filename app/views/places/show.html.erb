@@ -1,6 +1,6 @@
 <div class="place">
 	<h3 class="light header"><%= @place.name%></h3>
-	<div class="row">
+	<div class="row show-place">
 		<div class="col s6">
 			<div class="slider">
 			    <ul class="slides">
@@ -22,7 +22,7 @@
 				<%count = star.starcount%>
 				<%i =1 %>
 				<% for i in (i..count) %>
-					<i class="material-icons left" style="margin-left:5px;width:20px;color:red; margin-top:5px;">star_rate</i>
+					<i class="material-icons left star-icon" style="margin-left:5px;width:20px;color:red; margin-top:5px;">star_rate</i>
 				<%end%>
 				<p style="clear:both"></p>
 			</p>
@@ -43,7 +43,7 @@
 	<div class="row review">
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s3">
+				<li class="tab col s3 comment-show" >
 					<a href="#comment">Bình luận</a>
 				</li>
 				<li class="tab col s3">
@@ -91,10 +91,10 @@
 			  <div class="row left" style="margin-top:20px;">
 			  	<%@comments.each do |cm|%>
 			  		<%user = User.find(cm.user_id)%>
-			  		 <div class="col s9">
+			  		 <div class="col s9 show-comment">
 					        <div class="card-panel grey lighten-5 z-depth-1">
 					          <div class="row valign-wrapper">
-					            <div class="col s2">
+					            <div class="col s2 image_comment">
 					              	<%=image_tag user.photo.url(:thumb), :class => 'circle responsive-img'%>
 					            </div>
 					            <div class="col s10" >

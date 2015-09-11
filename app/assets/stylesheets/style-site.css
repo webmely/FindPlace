@@ -1,0 +1,110 @@
+.menu-p{
+	margin-left:80px;
+}
+.sologan:hover{
+	background:none;
+}
+.menu-login li{
+	padding-left:20px;
+	padding-right:20px;
+}
+.menu-login a{
+	display:inline;
+	padding:0;
+	cursor:pointer;
+}
+/*css for back to top*/
+.cd-top {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  bottom: 40px;
+  right: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  /* image replacement properties */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  background: #607D8B image-url("cd-top-arrow.svg") no-repeat center 50%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+  -moz-transition: opacity .3s 0s, visibility 0s .3s;
+  transition: opacity .3s 0s, visibility 0s .3s;
+}
+.cd-top.cd-is-visible, .cd-top.cd-fade-out, .no-touch .cd-top:hover {
+  -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+  -moz-transition: opacity .3s 0s, visibility 0s 0s;
+  transition: opacity .3s 0s, visibility 0s 0s;
+}
+.cd-top.cd-is-visible {
+  /* the button becomes visible */
+  visibility: visible;
+  opacity: 1;
+}
+.cd-top.cd-fade-out {
+  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  opacity: .5;
+}
+.no-touch .cd-top:hover {
+  background-color: #e86256;
+  opacity: 1;
+}
+/*end for back to top*/
+
+@media only screen and (max-width: 992px){
+	nav .brand-logo {
+		left:90%;
+		transform: translateX(-50%);
+	}
+	nav .brand-logo img{
+		width:85px !important;
+	}
+	#mobile-demo{
+		color:#000;
+		z-index:9999;
+	}
+	#mobile-demo a{
+		padding:0;
+	}
+	#modal1{
+		z-index:99999 !important;
+	}
+      .show-place .col{
+        width:100% !important;
+        float:left;
+      }
+      .comment-show{
+          margin-right:10px !important;
+      }
+      .image_comment{
+        display:none;
+      }
+      .show-comment{
+        width:100% !important;
+      }
+      .slider .input-search{
+        left:0;
+        width:100%;
+      }
+      .input-search h4{
+        display:none;
+      }
+      .input-search h6 span{
+        display:none;
+      }
+      .input-search h6 p{
+          float:left;
+          width:50%;
+      }
+      .search-input{
+        width:100% !important;
+      }
+      .star-icon{
+        margin:0 !important;
+      }
+}
+@media only screen and (min-width: 0){
+
+}

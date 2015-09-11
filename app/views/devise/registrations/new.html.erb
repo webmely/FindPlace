@@ -2,19 +2,31 @@
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h4>
+            <%= pluralize(@user.errors.count, "error") %> prohibited
+            this user from being saved:
+          </h4>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
   <div class="row">
         <div class="input-field col s12">
             <%=f.email_field :email %>
-          <label for="email">Email</label>
+          <label for="email" class="active">Email</label>
         </div>
   </div>
 
   <div class="row">
         <div class="input-field col s12">
             <%=f.password_field :password %>
-            <label for="email">Password</label>
+            <label for="email" class="active">Password</label>
             <% if @minimum_password_length %>
             <em>password (<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
@@ -24,28 +36,28 @@
   <div class="row">
         <div class="input-field col s12">
             <%= f.password_field :password_confirmation, autocomplete: "off" %>
-            <label for="email">Password confirmation</label>
+            <label for="email" class="active">Password confirmation</label>
         </div>
   </div>
 
   <div class="row">
         <div class="input-field col s12">
           <%=f.text_field :fullname %>
-          <label for="email">Fullname</label>
+          <label for="email" class="active">Fullname</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
           <%=f.text_field :address %>
-          <label for="email">Address</label>
+          <label for="email" class="active">Address</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
           <%=f.text_field :age %>
-          <label for="email">Age</label>
+          <label for="email" class="active">Age</label>
         </div>
       </div>
       <div class="row">
