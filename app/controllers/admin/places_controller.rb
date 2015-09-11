@@ -45,9 +45,12 @@ module Admin
 		      end 
 
 			if @place.update(places_params)
-				params[:place][:photo].each do |picture|
-					@place.image.create(:photo => picture)
+				unless params[:place][:photo].nil?
+					params[:place][:photo].each do |picture|
+						@place.image.create(:photo => picture)
+					end
 				end
+				
 				redirect_to admin_places_path
 			else
 				render 'edit'

@@ -32,7 +32,12 @@ module Admin
 
 		def destroy
 			@user = User.find(params[:id])
+			@com = Comment.where(user_id: params[:id])
 			@user.destroy
+			@com.each do |c|
+				@com = Comment.find(c.id)
+				@com.destroy
+			end
 			redirect_to admin_users_path
 		end
 
