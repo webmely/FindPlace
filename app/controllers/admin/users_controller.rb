@@ -1,5 +1,6 @@
 module Admin
 	class UsersController < AdminController
+		#ham load tất cả user vaf phan trang
 		def index
 			@users = User.order("created_at DESC").page(params[:page]).per(10)
 		end
@@ -32,8 +33,10 @@ module Admin
 
 		def destroy
 			@user = User.find(params[:id])
+			#doc tat ca comment theo user_id 
 			@com = Comment.where(user_id: params[:id])
 			@user.destroy
+			#xoa tat ca comment voi user_id
 			@com.each do |c|
 				@com = Comment.find(c.id)
 				@com.destroy

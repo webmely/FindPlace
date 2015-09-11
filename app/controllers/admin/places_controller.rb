@@ -19,17 +19,19 @@ module Admin
 
 		def create
 			@place = Place.new(places_params)
+			#kiem tra chon file image gioi thieu cho place
 			if !params[:place][:photo].nil?
 				if @place.save
+					#sau khi luu place thi luu image gioi thieu vao bang image
 						params[:place][:photo].each do |picture|
 							@place.image.create(:photo => picture)
 						end
 						redirect_to admin_places_path
-
 				else
 					render 'new'
 				end
 			else
+				#Thong bao neu chua chon anh gioi thieu cho dia diem
 				@message = "Bạn chưa chọn ảnh nào giới thiệu cho địa điểm này ."
 				render 'new'
 			end
@@ -37,16 +39,20 @@ module Admin
 
 		def update
 			@place = Place.find(params[:id])
+			#Kiem tra xem co image gioi thieu nao chon de xoa khong
 			unless params[:photo_old].nil?
 			      params[:photo_old].each do |key|
+			      	#xoa image duoc chon
 			        	image = Image.find(key[0])
 			        	image.destroy
 			        end
 		      end 
-
+		      #update place
 			if @place.update(places_params)
+				#kiem tra nguoi dung co upload image gioi thieu moi khong
 				unless params[:place][:photo].nil?
 					params[:place][:photo].each do |picture|
+						#luu imag gioi thieu moi vao bang image
 						@place.image.create(:photo => picture)
 					end
 				end

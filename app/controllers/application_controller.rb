@@ -5,12 +5,14 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   #Using cancan
+  #Dieu huong truy cap neu khong phai la admin ma truy cap vao admin page
   rescue_from CanCan::AccessDenied do |exception|
     #redirect to page error 404.html
   	render :file => "#{Rails.root}/public/404.html", :status => 403, :layout => false
   end
   #End cancan
 
+#Ham cho phep thay doi thong tin cua user khi signup va update user
   def configure_permitted_parameters
     #check field is user signup
    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :fullname, :address, :age, :role,:photo) }

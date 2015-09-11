@@ -22,6 +22,7 @@ validates :avatar, presence: true
     validates_attachment :avatar, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]}
 
     #function search provice and type
+    #Ham tim kiem auto comple tren view index
     def self.search(type_id, provice_id)
 		if type_id == "all"
 			where("provice_id = #{provice_id}")
@@ -35,11 +36,13 @@ validates :avatar, presence: true
     end
 
     #function load top place
+    #ham hien thi dia diem danh gia cao tren trang index
     def self.topplace
         where("star_id >= 3")
     end
 
     #function search by provice
+    #Ham tim kiem theo tinh thanh va the loai cua dia diem
     def self.searchbyprovice(provice_id, type_id)
       where("provice_id = #{provice_id} AND type_id = #{type_id}")
     end

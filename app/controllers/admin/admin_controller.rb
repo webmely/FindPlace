@@ -6,6 +6,7 @@ module Admin
 
 		private
 		#check user with role admin
+		
 		def authen
 			authorize! :manage, :all
 		end

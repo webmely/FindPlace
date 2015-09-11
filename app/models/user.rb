@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   
   validates :fullname, presence:true
-  validates :age, numericality: { only_integer: true }
+  validates :age, numericality: { only_integer: true } #validate chi duoc nhap vao kieu so
   validates :photo, presence: true
   has_attached_file :photo,
                     :styles => { :thumb => "140x140#", :small => "70x70#"},

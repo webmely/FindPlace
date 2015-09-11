@@ -1,3 +1,4 @@
 class Star < ActiveRecord::Base
-	validates :starcount , presence:true , numericality: true
+	#validate field khong duoc de trong , va chi duoc nhap vao kieu so
+	validates :starcount , presence:true , numericality: true 
 end
